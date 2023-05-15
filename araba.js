@@ -54,6 +54,13 @@ function gameOver(){        // Oyunu bitiren fonksiyon
   }, 500);
 }
 
+function createCar(){         // Araba oluşturma fonksiyonu
+  araba.push({                // Yeni araba oluşturma
+    x:Math.floor(Math.random()*100),        // Arabanın x koordinatını rastgele belirleme
+    y:550                            // Arabanın y koordinatını belirleme
+});
+}
+
 function draw() {                               // Oyunun çalıştığı fonksiyon
     context.drawImage(yol, 0, 0, 300, 700);         // Yol resmini çizdirme
     context.drawImage(sariaraba, ax, ay, 50, 100);      // Sarı araba resmini çizdirme
@@ -63,18 +70,14 @@ function draw() {                               // Oyunun çalıştığı fonksi
         araba[i].y--;                    // Arabaların y koordinatını azaltma
         
         if(araba[i].y == 10){           // Arabaların y koordinatı 10'a ulaştığında yeni araba oluşturma
-            araba.push({                // Yeni araba oluşturma
-                x:Math.floor(Math.random()*100),        // Arabanın x koordinatını rastgele belirleme
-                y:550                            // Arabanın y koordinatını belirleme
-            });
+            createCar();
             score++;            // Skoru arttırma
         }
 
-        if((ax < 0 || ay < 0 || ax > 250 || ay > 590) || (score == 7) ||
-        (ay+75 >= araba[i].y && ay <= araba[i].y+140 && ax >= araba[i].x-25 && ax <= araba[i].x+125)            // Arabaların çarpışma durumlarını kontrol etme
-        || (ay+75 >= araba[i].y && ay <= araba[i].y+140 && ax >= araba[i].x+185 && ax <= araba[i].x+290)){
-          
-          
+        if((ax < 0 || ay < 0 || ax > 250 || ay > 590)     // Sarı arabanın yoldan çıkma durumlarını kontrol etme
+        || (score == 7)        // Skor 7'ye ulaştığında oyunu bitirme
+        || (ay+75 >= araba[i].y && ay <= araba[i].y+140 && ax >= araba[i].x-25 && ax <= araba[i].x+125)            // Sarı arabanın ikili araba ile çarpışma durumlarını kontrol etme
+        || (ay+75 >= araba[i].y && ay <= araba[i].y+140 && ax >= araba[i].x+185 && ax <= araba[i].x+290)){          // Sarı arabanın kırmızı araba ile  çarpışma durumlarını kontrol etme
           
           gameOver();         // Oyunu bitirme
         }
