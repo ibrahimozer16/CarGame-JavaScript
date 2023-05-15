@@ -13,7 +13,7 @@ Oyun klavyedeki ok tuşlarını kullanarak oynanılmaktadır.
 Oyunun amacı sarı araba ile diğer arabalara çarpmadan skoru 7 yapmaktır.
 Oyun, sarı araba ile oyun dışına çıktığında, diğer arabalara çarptığında ya da skor 7 olduğunda bitmektedir.
 
-Araba çarpınca. . . . . . . . . . . . . . . . . . . . . . . . . . . . .Yoldan Çıkınca                       
+Araba çarpınca. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .Yoldan Çıkınca                       
 ![arabacarpmasi](https://github.com/ibrahimozer16/CarGame-JavaScript/assets/91963566/025ead2a-8f7d-4969-8a60-4d9bca6ff360)
 ![yoldancikma](https://github.com/ibrahimozer16/CarGame-JavaScript/assets/91963566/8fc3239c-8c36-4374-8889-6e94397e8e6d)                                          
 Skor 7 olunca                                                                                                       
