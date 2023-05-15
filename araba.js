@@ -14,7 +14,7 @@ ikiliaraba.src = "ikiliaraba.png";
 var kirmiziaraba = new Image();
 kirmiziaraba.src = "kirmiziaraba.png";
 
-var gap = 190;        // İki araba arasındaki boşluk + ikili arabanın genişliği 
+var uzunluk = 190;        // İki araba arasındaki boşluk + ikili arabanın genişliği 
 var ax = 150;         // Sarı arabanın başlangıç koordinatları
 var ay = 90;
 var score = 0;
@@ -38,10 +38,17 @@ document.addEventListener("keydown", function(event) {  // Klavye tuşlarına ba
   });
 
 
-var araba=[];       // Arabaların koordinatlarını tutan dizi
-araba[0] = {        // Arabaların başlangıç koordinatları
-    y:550,
-    x:0
+var araba=[      // Arabaların koordinatlarını tutan dizi
+  {                 
+    y:550,                                // İlk arabanın y koordinatı
+    x:Math.floor(Math.random()*100)       // İlk arabanın x koordinatı
+  }]; 
+
+function createCar(){         // Araba oluşturma fonksiyonu
+  araba.push({                // Yeni araba oluşturma
+    x:Math.floor(Math.random()*100),        // Yeni arabanın x koordinatını rastgele belirleme
+    y:550                            // Yeni arabanın başlayacağı y koordinatı
+});
 }
 
 function gameOver(){        // Oyunu bitiren fonksiyon
@@ -54,19 +61,14 @@ function gameOver(){        // Oyunu bitiren fonksiyon
   }, 500);
 }
 
-function createCar(){         // Araba oluşturma fonksiyonu
-  araba.push({                // Yeni araba oluşturma
-    x:Math.floor(Math.random()*100),        // Arabanın x koordinatını rastgele belirleme
-    y:550                            // Arabanın y koordinatını belirleme
-});
-}
+
 
 function draw() {                               // Oyunun çalıştığı fonksiyon
     context.drawImage(yol, 0, 0, 300, 700);         // Yol resmini çizdirme
     context.drawImage(sariaraba, ax, ay, 50, 100);      // Sarı araba resmini çizdirme
     for(var i=0; i<araba.length; i++){          // Arabaları çizdirme
         context.drawImage(ikiliaraba, araba[i].x, araba[i].y, 140, 140);           // İkili araba resmini çizdirme    
-        context.drawImage(kirmiziaraba, araba[i].x+gap, araba[i].y, 120, 120);      // Kırmızı araba resmini çizdirme
+        context.drawImage(kirmiziaraba, araba[i].x+ uzunluk, araba[i].y, 120, 120);      // Kırmızı araba resmini çizdirme
         araba[i].y--;                    // Arabaların y koordinatını azaltma
         
         if(araba[i].y == 10){           // Arabaların y koordinatı 10'a ulaştığında yeni araba oluşturma
@@ -92,3 +94,6 @@ function draw() {                               // Oyunun çalıştığı fonksi
 }
 
 draw();     // Oyunu çalıştırma
+
+
+
