@@ -44,6 +44,15 @@ araba[0] = {        // Arabaların başlangıç koordinatları
     x:0
 }
 
+function gameOver(){        // Oyunu bitiren fonksiyon
+  context.font = "20px Arial";          // Skoru yazdırma 
+  context.fillStyle = "red";            
+  context.fillText("Oyun Bitti! Skorunuz: "+score, 30, 350);    // Oyun bitti yazısını ve skoru yazdırma
+  
+  setTimeout(function() {          // Oyunu yeniden başlama süresini belirleyen fonksiyon
+    location.reload();        // Sayfayı yenileme
+  }, 500);
+}
 
 function draw() {                               // Oyunun çalıştığı fonksiyon
     context.drawImage(yol, 0, 0, 300, 700);         // Yol resmini çizdirme
@@ -64,7 +73,10 @@ function draw() {                               // Oyunun çalıştığı fonksi
         if((ax < 0 || ay < 0 || ax > 250 || ay > 590) 
         || (ay+75 >= araba[i].y && ay <= araba[i].y+140 && ax >= araba[i].x-25 && ax <= araba[i].x+125)            // Arabaların çarpışma durumlarını kontrol etme
         || (ay+75 >= araba[i].y && ay <= araba[i].y+140 && ax >= araba[i].x+185 && ax <= araba[i].x+290)){
-            location.reload();          // Oyun bittiğinde sayfayı yenileme
+          
+          
+          
+          gameOver();         // Oyunu bitirme
         }
 
     }
