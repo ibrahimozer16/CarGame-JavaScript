@@ -70,8 +70,8 @@ function draw() {                               // Oyunun çalıştığı fonksi
             score++;            // Skoru arttırma
         }
 
-        if((ax < 0 || ay < 0 || ax > 250 || ay > 590) 
-        || (ay+75 >= araba[i].y && ay <= araba[i].y+140 && ax >= araba[i].x-25 && ax <= araba[i].x+125)            // Arabaların çarpışma durumlarını kontrol etme
+        if((ax < 0 || ay < 0 || ax > 250 || ay > 590) || (score == 7) ||
+        (ay+75 >= araba[i].y && ay <= araba[i].y+140 && ax >= araba[i].x-25 && ax <= araba[i].x+125)            // Arabaların çarpışma durumlarını kontrol etme
         || (ay+75 >= araba[i].y && ay <= araba[i].y+140 && ax >= araba[i].x+185 && ax <= araba[i].x+290)){
           
           
